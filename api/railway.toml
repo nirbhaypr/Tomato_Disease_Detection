@@ -1,0 +1,2 @@
+[build]
+builder = "paketo-buildpacks/python"
