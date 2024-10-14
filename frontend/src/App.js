@@ -9,7 +9,7 @@ import {
   Paper,
 } from '@mui/material';
 
-function App() {
+const App = React.memo(() => {  // Wrap component with React.memo
   const [selectedFile, setSelectedFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
   const [prediction, setPrediction] = useState('');
@@ -36,7 +36,7 @@ function App() {
     multiple: false,
   });
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = useCallback(async (event) => {
     event.preventDefault();
     setLoading(true);
     setError('');
@@ -47,14 +47,14 @@ function App() {
     formData.append('file', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:8000/predict', formData, {
+      const response = await axios.post('https://tomato-backend-production.up.railway.app/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       const predictionText = response.data.prediction === "Healthy"
         ? "This plant is Healthy"
-        : `Predicted Disease: ${response.data.prediction}`;
+        : `Predicted Disease: ${response.data.prediction}`; 
       setPrediction(predictionText);
       setConfidence(response.data.confidence);
     } catch (error) {
@@ -63,7 +63,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedFile]);  // Add selectedFile as a dependency
 
   return (
     <Container maxWidth="sm" style={{ marginTop: '50px' }}>
@@ -122,6 +122,6 @@ function App() {
       </Paper>
     </Container>
   );
-}
+});
 
 export default App;
