@@ -27,6 +27,10 @@
 
       body {
         background-image: url('bg.png');
+        background-size: cover; /* Make the background cover the entire page */
+        background-position: center; /* Center the background image */
+        background-attachment: fixed; /* Make the background stay fixed during scroll */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
       }
 
       #root {
@@ -52,6 +56,19 @@
       a:hover {
         color: #0073e6;
       }
+
+      /* Make adjustments for mobile screens */
+      @media only screen and (max-width: 600px) {
+        body {
+          background-size: contain; /* Scale the background to fit smaller screens */
+          background-position: top; /* Adjust position for mobile */
+        }
+
+        footer {
+          font-size: 14px; /* Slightly smaller footer text on mobile */
+        }
+      }
+      
     </style>
   </head>
   <body>
