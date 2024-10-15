@@ -11,6 +11,8 @@ Tomato Disease Detection is a machine learning project designed to identify dise
 * Mobile-responsive user interface with custom background and footer.\
 
 ## Demo
+![image](https://github.com/user-attachments/assets/960d598e-f20b-4031-b695-06a380a5282f)
+
 You can check out the live demo of the application [here](https://tomato-disease-detect.up.railway.app/)
 
 ## Table of Contents
